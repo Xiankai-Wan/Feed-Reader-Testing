@@ -25,6 +25,12 @@ $(function() {
         /* TODO:
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的。
          */
+        it('all source should be defined and not empty',function(){
+            for(var i=0;i<allFeeds.length;i++){
+                expect(allFeeds[i].url).toBeDefined();
+                expect(allFeeds[i].url.length).not.toBe(0);
+            }
+        });
 
 
         /* TODO:
