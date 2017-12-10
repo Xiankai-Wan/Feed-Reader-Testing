@@ -25,7 +25,7 @@ $(function() {
         /* TODO:
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的。
          */
-        it('all source should be defined and not empty',function(){
+        it('url should be defined and not empty',function(){
             for(var i=0;i<allFeeds.length;i++){
                 expect(allFeeds[i].url).toBeDefined();
                 expect(allFeeds[i].url.length).not.toBe(0);
@@ -34,7 +34,7 @@ $(function() {
         /* TODO:
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有名字字段而且不是空的。
          */
-        it('all name should be defined and not empty', function () {
+        it('name should be defined and not empty', function () {
             for (var i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].name).toBeDefined();
                 expect(allFeeds[i].name.length).not.toBe(0);
@@ -52,7 +52,7 @@ $(function() {
          * 写一个测试用例保证菜单元素默认是隐藏的。你需要分析 html 和 css
          * 来搞清楚我们是怎么实现隐藏/展示菜单元素的。
          */
-        it('should be hiidn by default',function(){
+        it('should be hiddn by default',function(){
             expect(Body.hasClass('menu-hidden')).toBeTruthy();
         });
 
@@ -61,7 +61,7 @@ $(function() {
           * 测试应该包含两个 expectation ： 党点击图标的时候菜单是否显示，
           * 再次点击的时候是否隐藏。
           */
-          it('should change class to show and hidden menu',function(){
+        it('changes visibility when the menu icon is clicked',function(){
             MenuButton.trigger('click');
             expect(Body.hasClass('menu-hidden')).toBeFalsy();
              MenuButton.trigger('click');
