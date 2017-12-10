@@ -21,25 +21,24 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-
         /* TODO:
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的。
          */
         it('url should be defined and not empty',function(){
-            for(var i=0;i<allFeeds.length;i++){
-                expect(allFeeds[i].url).toBeDefined();
-                expect(allFeeds[i].url.length).not.toBe(0);
-            }
+            sameDetection("url");
         });
         /* TODO:
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有名字字段而且不是空的。
          */
         it('name should be defined and not empty', function () {
-            for (var i = 0; i < allFeeds.length; i++) {
-                expect(allFeeds[i].name).toBeDefined();
-                expect(allFeeds[i].name.length).not.toBe(0);
-            }
+            sameDetection("name");
         });
+        function sameDetection(e) {
+            for (var i = 0; i < allFeeds.length; i++) {
+                expect(allFeeds[i][e]).toBeDefined();
+                expect(allFeeds[i][e].length).not.toBe(0);
+            }
+        };
     });
     /* TODO: 写一个叫做 "The menu" 的测试用例 */
     describe('The menu',function(){
@@ -99,13 +98,13 @@ $(function() {
             });
         });
        });
+       /* TODO:
+        * 写一个测试保证当用 loadFeed 函数加载一个新源的时候内容会真的改变。
+        * 记住，loadFeed() 函数是异步的。
+        */
+       it('should have new contact',function(done){
+           expect($('.feed').html()).not.toEqual(originHtml);
+           done();
+       });
     });
-        /* TODO:
-         * 写一个测试保证当用 loadFeed 函数加载一个新源的时候内容会真的改变。
-         * 记住，loadFeed() 函数是异步的。
-         */
-        it('should have new contact',function(done){
-            expect($('.feed').html()).not.toEqual(originHtml);
-            done();
-        });
 }());
