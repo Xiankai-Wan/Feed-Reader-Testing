@@ -91,13 +91,21 @@ $(function() {
 
     /* TODO: 写一个叫做 "New Feed Selection" 的测试用例 */
     describe('New Feed Selection',function(){
-
+       beforeEach(function(done){
+        loadFeed(0,function(){
+            var originHtml = $('.feed').html();
+            loadFeed(1,function(){
+                done;
+            });
+        });
+       });
     });
         /* TODO:
          * 写一个测试保证当用 loadFeed 函数加载一个新源的时候内容会真的改变。
          * 记住，loadFeed() 函数是异步的。
          */
-        it('should have new contact',function(){
-            
+        it('should have new contact',function(done){
+            expect($('.feed'.html()).not.toEqual(originHtml);
+            done();
         });
 }());
