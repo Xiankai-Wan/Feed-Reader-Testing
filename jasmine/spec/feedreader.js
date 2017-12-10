@@ -105,7 +105,7 @@ $(function() {
          * 记住，loadFeed() 函数是异步的。
          */
         it('should have new contact',function(done){
-            expect($('.feed'.html()).not.toEqual(originHtml);
+            expect($('.feed').html()).not.toEqual(originHtml);
             done();
         });
 }());
