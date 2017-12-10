@@ -52,7 +52,7 @@ $(function() {
          * 来搞清楚我们是怎么实现隐藏/展示菜单元素的。
          */
         it('should be hiddn by default',function(){
-            expect(Body.hasClass('menu-hidden')).toBeTruthy();
+            expect(Body.hasClass('menu-hidden')).toBe(true);
         });
 
          /* TODO:
@@ -62,9 +62,9 @@ $(function() {
           */
         it('changes visibility when the menu icon is clicked',function(){
             MenuButton.trigger('click');
-            expect(Body.hasClass('menu-hidden')).toBeFalsy();
+            expect(Body.hasClass('menu-hidden')).toBe(false);
              MenuButton.trigger('click');
-             expect(Body.hasClass('menu-hidden')).toBeTruthy();
+             expect(Body.hasClass('menu-hidden')).toBe(true);
           });
     });
 
@@ -78,26 +78,24 @@ $(function() {
          * 和异步的 done() 函数。
          */
         beforeEach(function(done){
-            loadFeed(0,function(){
-                done();
-            });
+            loadFeed(0,done);
         });
-        it('should be called and have one more element',function(done){
+        it('should be called and have one more element',function(){
             expect($('.feed .entry').length).not.toBe(0);
-            done();
         });
     });
 
     /* TODO: 写一个叫做 "New Feed Selection" 的测试用例 */
     describe('New Feed Selection',function(){
-       beforeEach(function(done){
-        loadFeed(0,function(){
-            var originHtml = $('.feed').html();
-            loadFeed(1,function(){
-                done;
-            });
+        var originHtml;
+        beforeEach(function(done){
+                loadFeed(0,function(){
+                    originHtml = $('.feed').html();
+                    loadFeed(1,function(){
+                        done;
+                    });
+                });
         });
-       });
        /* TODO:
         * 写一个测试保证当用 loadFeed 函数加载一个新源的时候内容会真的改变。
         * 记住，loadFeed() 函数是异步的。
